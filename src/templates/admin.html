@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinoXP Admin</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-page">
+<header>
+    <div class="logo">
+        <h1>KinoXP Admin</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/" class="home-link">Til forsiden</a></li>
+            <li><a href="#" class="logout-link">Log ud</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <aside class="sidebar">
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="#movies" class="admin-nav-link active" data-section="movies">Film</a></li>
+                <li><a href="#showings" class="admin-nav-link" data-section="showings">Forestillinger</a></li>
+                <li><a href="#theaters" class="admin-nav-link" data-section="theaters">Biografsale</a></li>
+                <li><a href="#reservations" class="admin-nav-link" data-section="reservations">Reservationer</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="admin-content">
+        <section id="movies" class="admin-section active">
+            <h2>Film Administration</h2>
+            <div class="action-bar">
+                <button id="create-movie-btn" class="primary-btn">Opret ny film</button>
+            </div>
+            <div class="data-container" id="movies-container">
+                <div class="loading">Indlæser film...</div>
+            </div>
+        </section>
+
+        <section id="showings" class="admin-section">
+            <h2>Forestillinger Administration</h2>
+            <div class="action-bar">
+                <button id="create-showing-btn" class="primary-btn">Opret ny forestilling</button>
+            </div>
+            <div class="data-container" id="showings-container">
+                <div class="loading">Indlæser forestillinger...</div>
+            </div>
+        </section>
+
+        <section id="theaters" class="admin-section">
+            <h2>Biografsale Administration</h2>
+            <div class="data-container" id="theaters-container">
+                <div class="loading">Indlæser biografsale...</div>
+            </div>
+        </section>
+
+        <section id="reservations" class="admin-section">
+            <h2>Reservationer</h2>
+            <div class="data-container" id="reservations-container">
+                <div class="loading">Indlæser reservationer...</div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- admin -->
+<div id="movie-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="movie-modal-title">Film</h2>
+        <div id="movie-form-container">
+            <!-- todo movie form -->
+        </div>
+    </div>
+</div>
+
+<div id="showing-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="showing-modal-title">Forestilling</h2>
+        <div id="showing-form-container">
+            <!-- todo form her-->
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 KinoXP Admin - Alle rettigheder forbeholdes</p>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/adminMovies.js"></script>
+<script src="/js/adminShowings.js"></script>
+<script src="/js/adminTheaters.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

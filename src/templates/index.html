@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinoXP - Din Lokale Biograf</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>KinoXP</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Film</a></li>
+            <li><a href="#">Om os</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="/admin.html" class="admin-link">Admin</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h2>Velkommen til KinoXP</h2>
+        <p>Se de nyeste film i vores hyggelige biografer</p>
+    </section>
+
+    <section id="movie-list" class="movie-container">
+        <div class="loading">Indlæser film...</div>
+    </section>
+</main>
+
+<div id="reservation-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Reserve billetter</h2>
+        <div id="reservation-details">
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 KinoXP - Alle rettigheder forbeholdes</p>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/movieList.js"></script>
+<script src="/js/reservationModal.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
