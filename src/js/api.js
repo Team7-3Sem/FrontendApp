@@ -1,5 +1,5 @@
 /**
- * API Service for KinoXP
+ * API Service for Kino Grisen
  * HTTP requests to the backend
  */
 const API = {
