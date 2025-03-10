@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // andre?
 
-    console.log('KinoXP customer application initialized');
+    console.log('KinoGrisen customer application initialized');
 });

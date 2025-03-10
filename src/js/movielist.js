@@ -23,7 +23,7 @@ const MovieList = {
     // Render movies to the DOM
     renderMovies() {
         if (!this.moviesData.length) {
-            this.container.innerHTML = '<p class="no-results">Ingen film at vise i øjeblikket.</p>';
+            this.container.innerHTML = '<p class="no-results">Der er ingen film at vise i øjeblikket :(</p>';
             return;
         }
 
@@ -35,7 +35,7 @@ const MovieList = {
             const movieElement = document.createElement('div');
             movieElement.className = 'movie-item';
 
-            // Temporary placeholder image
+            // placeholder billede
             const imageSrc = `/images/placeholder-movie.jpg`;
 
             movieElement.innerHTML = `
@@ -60,7 +60,7 @@ const MovieList = {
         });
     },
 
-    // Load and display showings for a specific movie
+    // Load and display showings for specific movie
     async loadShowingsForMovie(movieId) {
         try {
             const showings = await API.showings.getAll();
@@ -110,7 +110,7 @@ const MovieList = {
             });
         } catch (error) {
             const showingsList = document.getElementById(`showings-${movieId}`);
-            showingsList.innerHTML = '<p class="error">Kunne ikke indlæse forestillinger.</p>';
+            showingsList.innerHTML = '<p class="error">Kunne ikke indlæse forestillinger :(</p>';
         }
     },
 

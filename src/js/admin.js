@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TODO:reservations admin modul initieres
 
-    console.log('KinoXP admin application initialized');
+    console.log('KinoGrisen admin application initialized');
 });
 
 /**
