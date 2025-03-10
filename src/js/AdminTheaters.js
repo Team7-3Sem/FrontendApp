@@ -1,6 +1,5 @@
 /**
  * Admin Theaters Module
- * Handles the theater management in the admin panel
  */
 const AdminTheaters = {
     container: null,
