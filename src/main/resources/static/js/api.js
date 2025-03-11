@@ -3,7 +3,7 @@
  * HTTP requests to the backend
  */
 const API = {
-    BASE_URL: '',  // tom, relative stier
+    BASE_URL: 'http://localhost:8080',
 
     // fetch
     async fetchData(endpoint, options = {}) {
