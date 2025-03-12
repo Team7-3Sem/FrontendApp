@@ -14,6 +14,7 @@ const MovieList = {
     async loadMovies() {
         try {
             this.moviesData = await API.movies.getAll();
+            console.log('Loaded movies:', this.moviesData); // Log movie data
             this.renderMovies();
         } catch (error) {
             this.showError('Kunne ikke indlæse film. Prøv igen senere.');
@@ -27,10 +28,11 @@ const MovieList = {
             return;
         }
 
+        const today = new Date();
         this.container.innerHTML = '';
 
         this.moviesData.forEach(movie => {
-            if (!movie.isActive) return; // Skip inactive movies
+            if (!movie.isActive || new Date(movie.endDate) < today) return; // Skip inactive movies
 
             const movieElement = document.createElement('div');
             movieElement.className = 'movie-item';
@@ -46,6 +48,7 @@ const MovieList = {
                     <h3 class="movie-title">${movie.title}</h3>
                     <p class="movie-genre">${movie.genre} | ${movie.duration} min | ${this.formatAgeRestriction(movie.ageRestriction)}</p>
                     <p class="movie-description">${this.truncateText(movie.description, 150)}</p>
+                    <p class="movie-dates">Vises fra ${this.formatDate(new Date(movie.releaseDate))} til ${this.formatDate(new Date(movie.endDate))}</p>
                     <h4>Forestillinger:</h4>
                     <div class="showing-list" id="showings-${movie.movieID}">
                         <p class="loading-showings">Indlæser forestillinger...</p>
