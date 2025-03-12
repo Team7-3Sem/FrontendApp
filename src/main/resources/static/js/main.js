@@ -2,10 +2,9 @@
 todo
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize modules
     MovieList.init();
-    //Todo ReservationModal.init();
-
-    // andre?
+    ReservationModal.init();
 
     console.log('KinoGrisen customer application initialized');
 });
