@@ -18,7 +18,7 @@ const AdminReservations = {
             this.renderReservations();
         } catch (error) {
             this.showError('Kunne ikke indlæse reservationer. Prøv igen senere.');
-            console.error('Error loading reservations:', error);
+
         }
     },
 
@@ -190,7 +190,6 @@ const AdminReservations = {
             });
 
         } catch (error) {
-            console.error('Error viewing reservation details:', error);
             alert('Der opstod en fejl ved visning af reservationen.');
         }
     },
@@ -210,7 +209,6 @@ const AdminReservations = {
             alert(`Reservation markeret som ${reservation.isPaid ? 'betalt' : 'ikke betalt'}.`);
             this.loadReservations();
         } catch (error) {
-            console.error('Error updating reservation:', error);
             alert('Der opstod en fejl ved opdatering af reservationen.');
         }
     },
@@ -223,7 +221,6 @@ const AdminReservations = {
                 alert('Reservation slettet!');
                 this.loadReservations();
             } catch (error) {
-                console.error('Error deleting reservation:', error);
                 alert('Der opstod en fejl ved sletning af reservationen.');
             }
         }

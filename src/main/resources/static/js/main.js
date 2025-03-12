@@ -6,5 +6,4 @@ document.addEventListener('DOMContentLoaded', () => {
     MovieList.init();
     ReservationModal.init();
 
-    console.log('KinoGrisen customer application initialized');
 });

@@ -23,7 +23,6 @@ const AdminTheaters = {
             this.renderTheaters();
         } catch (error) {
             this.showError('Kunne ikke indlæse biografsale. Prøv igen senere.');
-            console.error('Error loading theaters:', error);
         }
     },
 
@@ -159,7 +158,6 @@ const AdminTheaters = {
             });
 
         } catch (error) {
-            console.error('Error viewing theater details:', error);
             alert('Der opstod en fejl ved visning af biografsal-detaljer.');
         }
     },
@@ -276,7 +274,6 @@ const AdminTheaters = {
                     // Reload theaters
                     this.loadTheaters();
                 } catch (error) {
-                    console.error('Error updating theater:', error);
                     alert('Der opstod en fejl ved opdatering af biografsalen.');
                 }
             });
@@ -289,7 +286,6 @@ const AdminTheaters = {
             });
 
         } catch (error) {
-            console.error('Error opening edit theater modal:', error);
             alert('Der opstod en fejl :(');
         }
     },

@@ -45,7 +45,6 @@ const ReservationModal = {
             // Show the modal
             this.modal.style.display = 'block';
         } catch (error) {
-            console.error('Error opening reservation modal:', error);
             alert('Der opstod en fejl. Prøv igen senere.');
         }
     },
@@ -173,7 +172,6 @@ const ReservationModal = {
                 seatsContainer.appendChild(rowDiv);
             }
         } catch (error) {
-            console.error('Error loading seating chart:', error);
             const seatsContainer = document.getElementById('seats-container');
             seatsContainer.innerHTML = '<p class="error">Kunne ikke indlæse pladsoversigt.</p>';
         }
@@ -237,7 +235,6 @@ const ReservationModal = {
             alert('Reservation gennemført! Du kan betale ved ankomst til biografen.');
             this.close();
         } catch (error) {
-            console.error('Error creating reservation:', error);
             alert('Der opstod en fejl ved oprettelse af reservationen. Prøv igen senere.');
         }
     },

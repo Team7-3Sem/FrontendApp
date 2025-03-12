@@ -45,7 +45,6 @@ const AdminShowings = {
             this.renderShowings();
         } catch (error) {
             this.showError('Kunne ikke indlæse forestillinger. Prøv igen senere.');
-            console.error('Error loading showings:', error);
         }
     },
 
@@ -294,7 +293,6 @@ const AdminShowings = {
             // Show modal
             this.modal.style.display = 'block';
         } catch (error) {
-            console.error('Error opening edit modal:', error);
             alert('Der opstod en fejl ved hentning af forestillingen.');
         }
     },
@@ -378,7 +376,6 @@ const AdminShowings = {
             this.closeModal();
             this.loadShowings();
         } catch (error) {
-            console.error('Error saving showing:', error);
             alert('Der opstod en fejl ved gem af forestillingen.');
         }
     },
@@ -427,7 +424,6 @@ const AdminShowings = {
             });
 
         } catch (error) {
-            console.error('Error viewing showing details:', error);
             alert('Der opstod en fejl ved visning af forestillingen.');
         }
     },
@@ -440,7 +436,6 @@ const AdminShowings = {
                 alert('Forestilling slettet!');
                 this.loadShowings();
             } catch (error) {
-                console.error('Error deleting showing:', error);
                 alert('Der opstod en fejl ved sletning af forestillingen.');
             }
         }
