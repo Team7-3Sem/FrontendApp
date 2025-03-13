@@ -1,14 +1,15 @@
+/* Seat layout container */
 #seat-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 300px; /* Adjust based on your theater layout */
-    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, 50px); /* Adjust for your layout */
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* Seat appearance */
+/* Default seat style */
 .seat {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: lightgray;
     display: flex;
     align-items: center;
@@ -27,4 +28,27 @@
 /* Selected seats */
 .selected {
     background-color: green;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+input {
+    padding: 5px;
+    width: 200px;
+}
+button {
+    padding: 10px;
+    background-color: #35ca13;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: darkblue;
 }
