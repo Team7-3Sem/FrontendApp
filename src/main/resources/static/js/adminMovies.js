@@ -21,11 +21,23 @@ const AdminMovies = {
             if (loading) loading.textContent = 'Indlæser film...';
 
             this.movieData = await API.movies.getAll();
+            await this.loadReservationCounts();
             this.renderMovies();
         } catch (error) {
             this.showError('Kunne ikke indlæse film. Prøv igen senere.');
-
         }
+    },
+
+    async loadReservationCounts() {
+        const countPromises = this.movieData.map(async (movie) => {
+            try {
+                const count = await API.movies.getReservationCount(movie.movieID);
+                movie.reservationCount = count;
+            } catch (error) {
+                movie.reservationCount = 'Fejl';
+            }
+        });
+        await Promise.all(countPromises);
     },
 
     renderMovies() {
@@ -50,6 +62,7 @@ const AdminMovies = {
                 <th>Startdato</th>
                 <th>Slutdato</th>
                 <th>Er Aktiv</th>
+                <th>Reservationer</th>
             </tr>    
         `;
         table.appendChild(tableHead);
@@ -67,6 +80,7 @@ const AdminMovies = {
                 <td>${movie.releaseDate}</td>
                 <td>${movie.endDate}</td>
                 <td>${movie.isActive ? 'Ja' : 'Nej'}</td>
+                <td>${movie.reservationCount}</td>
                 <td>
                     <button class="btn-create" data-id="${movie.movieID}">Opret</button>
                     <button class="btn-view" data-id="${movie.movieID}">Vis</button>
