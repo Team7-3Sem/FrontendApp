@@ -1,0 +1,30 @@
+#seat-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px; /* Adjust based on your theater layout */
+    gap: 5px;
+}
+
+/* Seat appearance */
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/* Reserved seats */
+.reserved {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+/* Selected seats */
+.selected {
+    background-color: green;
+}
