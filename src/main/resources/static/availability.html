@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinema Seat Selection</title>
   <link rel="stylesheet" href="styles.css">
- <!-- Link external CSS -->
 </head>
 <body>
 <h1>Select Your Seats</h1>
-<div id="seat-container"></div> <!-- The seat grid will be dynamically generated here -->
 
-<button id="reserve-button">Reserve Seats</button>
+<!-- Seat Layout -->
+<div id="seat-container"></div>
+
+<!-- Customer Information Form -->
+<form id="reservation-form">
+  <h2>Customer Details</h2>
+  <label for="customerName">Name:</label>
+  <input type="text" id="customerName" required>
+
+  <label for="customerPhone">Phone:</label>
+  <input type="text" id="customerPhone" required>
+
+  <label for="customerEmail">Email:</label>
+  <input type="email" id="customerEmail" required>
+
+  <button type="button" id="reserve-button">Reserve Seats</button>
+</form>
 
 <script src="SeatAvailability.js"></script>
 </body>
