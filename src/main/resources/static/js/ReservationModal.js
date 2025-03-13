@@ -9,14 +9,16 @@ const ReservationModal = {
     currentShowing: null,
     selectedSeats: [],
 
-    // start
+    // Initialize the module
     init() {
         this.modal = document.getElementById('reservation-modal');
         this.closeBtn = this.modal.querySelector('.close-modal');
         this.detailsContainer = document.getElementById('reservation-details');
 
-        // listeners
+        // Add event listeners
         this.closeBtn.addEventListener('click', this.close.bind(this));
+
+        // Close modal when clicking outside
         window.addEventListener('click', (event) => {
             if (event.target === this.modal) {
                 this.close();
@@ -30,11 +32,11 @@ const ReservationModal = {
             this.currentShowing = await API.showings.getById(showingId);
 
             if (!this.currentShowing) {
-                alert('Forestillingen blev ikke fundet :(');
+                alert('Forestillingen blev ikke fundet.');
                 return;
             }
 
-            // Reset
+            // Reset selected seats
             this.selectedSeats = [];
 
             // Render reservation form
@@ -47,13 +49,12 @@ const ReservationModal = {
         }
     },
 
-    // Close
+    // Close the modal
     close() {
         this.modal.style.display = 'none';
     },
-    
 
-    // Reservations form
+    // Render the reservation form
     renderReservationForm() {
         const movie = this.currentShowing.movie;
         const theater = this.currentShowing.theater;
@@ -104,7 +105,7 @@ const ReservationModal = {
                     <label for="customer-phone">Telefon</label>
                     <input type="tel" id="customer-phone" required>
                 </div>
-                // email? 
+                
                 <div class="form-group">
                     <label for="customer-email">Email</label>
                     <input type="email" id="customer-email">
@@ -130,13 +131,12 @@ const ReservationModal = {
         try {
             const seatsContainer = document.getElementById('seats-container');
 
-            // Get theater rows and seats
+            // Get theater layout
             const layout = await API.theaters.getLayout(theaterId);
             const rowCount = layout[0];
             const seatsPerRow = layout[1];
 
-            // Get taken seats
-            // TODO btw, pt mock reserverede seats
+            // ATTENTION: SIMULATED SEATS
             const takenSeats = this.simulateTakenSeats(rowCount, seatsPerRow);
 
             seatsContainer.innerHTML = '';
@@ -177,11 +177,11 @@ const ReservationModal = {
         }
     },
 
-    // seat selection
+    // Toggle seat selection
     toggleSeatSelection(seatElement, row, seat) {
         if (seatElement.classList.contains('taken')) return;
 
-        // Toggle selected state todo Grøn // rød?
+        // Toggle selected state
         seatElement.classList.toggle('selected');
 
         // Update selectedSeats array
@@ -191,15 +191,15 @@ const ReservationModal = {
             // Add to selected seats
             this.selectedSeats.push({ row, seat });
         } else {
-            // Remove
+            // Remove from selected seats
             this.selectedSeats.splice(seatIndex, 1);
         }
 
-        // update
+        // Update counter
         document.getElementById('selected-seats-count').textContent = this.selectedSeats.length;
     },
 
-    // submit
+    // Handle reservation form submit
     async handleReservationSubmit(event) {
         event.preventDefault();
 
@@ -212,7 +212,8 @@ const ReservationModal = {
         const customerPhone = document.getElementById('customer-phone').value;
         const customerEmail = document.getElementById('customer-email').value;
 
-        try { // resercvation data
+        try {
+            // Prepare reservation data
             const reservationData = {
                 showing: { showingID: this.currentShowing.showingID },
                 customerName,
@@ -223,23 +224,23 @@ const ReservationModal = {
                 isPaid: false,
                 seats: this.selectedSeats.map(seat => ({
                     seatNumber: seat.seat,
-                    rowNumber: seat.row
+                    rowNumber: seat.row,
+                    theater: { theaterId: this.currentShowing.theater.theaterId }
                 }))
             };
 
             // Create reservation
             await API.reservations.create(reservationData);
 
-            alert('Reservation gennemført!');
+            alert('Reservation gennemført! Du kan betale ved ankomst til biografen.');
             this.close();
         } catch (error) {
             alert('Der opstod en fejl ved oprettelse af reservationen. Prøv igen senere.');
         }
     },
 
-    // mock metode
+    // Simulate taken seats for demo purposes
     simulateTakenSeats(rowCount, seatsPerRow) {
-        // random
         const takenSeats = [];
         const takenCount = Math.floor(rowCount * seatsPerRow * 0.3); // 30% of seats are taken
 
@@ -247,7 +248,7 @@ const ReservationModal = {
             const row = Math.floor(Math.random() * rowCount) + 1;
             const seat = Math.floor(Math.random() * seatsPerRow) + 1;
 
-            // Check if sædet er reserveret
+            // Check if seat is already taken
             if (!takenSeats.some(s => s.row === row && s.seat === seat)) {
                 takenSeats.push({ row, seat });
             }
@@ -256,6 +257,7 @@ const ReservationModal = {
         return takenSeats;
     },
 
+    // Helper methods
     formatDate(date) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('da-DK', options);

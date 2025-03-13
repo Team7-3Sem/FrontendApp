@@ -24,7 +24,7 @@ const AdminMovies = {
             this.renderMovies();
         } catch (error) {
             this.showError('Kunne ikke indlæse film. Prøv igen senere.');
-            console.error('Error loading movies', error);
+
         }
     },
 
@@ -145,7 +145,7 @@ const AdminMovies = {
             });
 
         } catch (error) {
-            console.error('Error viewing movie details:', error);
+
             alert('Der opstod en fejl ved visning af biografsal-detaljer.');
         }
     },
@@ -279,7 +279,7 @@ const AdminMovies = {
                 alert('Filmen er slettet.');
                 this.loadMovies();
             } catch (error) {
-                console.error('Fejl ved sletning af film:', error);
+
                 alert('Kunne ikke slette filmen. Prøv igen senere.');
             }
         }

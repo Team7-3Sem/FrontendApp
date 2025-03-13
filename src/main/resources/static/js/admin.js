@@ -1,19 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
     initTabNavigation();
 
-    // admin moduler
+    // Initialize admin modules
     AdminMovies.init();
     AdminShowings.init();
     AdminTheaters.init();
+    AdminReservations.init();
 
-    // TODO:reservations admin modul initieres
-
-    console.log('KinoGrisen admin application initialized');
 });
 
 /**
- *
+ * Initialize tab navigation in admin panel
  */
 function initTabNavigation() {
     const navLinks = document.querySelectorAll('.admin-nav-link');
@@ -25,10 +23,12 @@ function initTabNavigation() {
 
             const targetId = link.getAttribute('data-section');
 
+            // Update active class on navigation
             navLinks.forEach(l => l.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
-
             link.classList.add('active');
+
+            // Update active class on sections
+            sections.forEach(s => s.classList.remove('active'));
             document.getElementById(targetId).classList.add('active');
         });
     });

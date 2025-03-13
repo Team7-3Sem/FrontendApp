@@ -1,11 +1,13 @@
 /**
  * API Service for Kino Grisen
- * HTTP requests to the backend
+ * Handles HTTP requests to the backend
  */
 const API = {
-    BASE_URL: 'http://localhost:8080',
+    BASE_URL: '',
 
-    // fetch
+    /**
+     * Generic fetch method for API calls
+     */
     async fetchData(endpoint, options = {}) {
         try {
             const response = await fetch(`${this.BASE_URL}${endpoint}`, {
@@ -21,7 +23,7 @@ const API = {
             }
 
             if (response.status === 204) {
-                return true;
+                return true; // No content, but successful
             }
 
             return await response.json();
@@ -31,7 +33,9 @@ const API = {
         }
     },
 
-    // Movies API
+    /**
+     * Movies API endpoints
+     */
     movies: {
         getAll: () => API.fetchData('/kinogrisen/movies'),
         getById: (id) => API.fetchData(`/kinogrisen/movies/${id}`),
@@ -48,7 +52,9 @@ const API = {
         })
     },
 
-    // Showings API
+    /**
+     * Showings API endpoints
+     */
     showings: {
         getAll: () => API.fetchData('/kinogrisen/showings'),
         getById: (id) => API.fetchData(`/kinogrisen/showings/${id}`),
@@ -65,18 +71,26 @@ const API = {
         })
     },
 
-    // Theaters API
+    /**
+     * Theaters API endpoints
+     */
     theaters: {
         getAll: () => API.fetchData('/kinogrisen/theatres'),
         getById: (id) => API.fetchData(`/kinogrisen/theatres/${id}`),
-        getLayout: (id) => API.fetchData(`/kinogrisen/theaters/${id}/layout`),
+        getLayout: (id) => API.fetchData(`/kinogrisen/theatres/${id}/layout`),
+        create: (theaterData) => API.fetchData('/kinogrisen/theatres', {
+            method: 'POST',
+            body: JSON.stringify(theaterData)
+        }),
         update: (id, theaterData) => API.fetchData(`/kinogrisen/theatres/${id}`, {
             method: 'PUT',
             body: JSON.stringify(theaterData)
         })
     },
 
-    // Reservations API todo
+    /**
+     * Reservations API endpoints
+     */
     reservations: {
         getAll: () => API.fetchData('/kinogrisen/reservations'),
         getById: (id) => API.fetchData(`/kinogrisen/reservations/${id}`),
