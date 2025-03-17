@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino Grisen Admin</title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <link rel="stylesheet" href="static/css/admin.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body class="admin-page">
 <header>
@@ -14,7 +14,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="/public" class="home-link">Til forsiden</a></li>
+            <li><a href="/index.html" class="home-link">Til forsiden</a></li>
             <li><a href="#" class="logout-link">Log ud</a></li>
         </ul>
     </nav>
@@ -33,16 +33,55 @@
     </aside>
 
     <div class="admin-content">
+        <!-- Movies Section -->
         <section id="movies" class="admin-section active">
             <h2>Film Administration</h2>
             <div class="action-bar">
                 <button id="create-movie-btn" class="primary-btn">Opret ny film</button>
             </div>
+
+            <!-- Movie Form (Hidden by Default) -->
+            <div id="movie-form-container" style="display: none;">
+                <h3>Opret ny film</h3>
+                <form id="movie-form">
+                    <label for="movie-title">Titel *</label>
+                    <input type="text" id="movie-title" required maxlength="100">
+
+                    <label for="movie-genre">Genre *</label>
+                    <input type="text" id="movie-genre" required>
+
+                    <label for="movie-duration">Varighed (minutter) *</label>
+                    <input type="number" id="movie-duration" min="1" required>
+
+                    <label for="movie-age">Aldersgrænse *</label>
+                    <input type="number" id="movie-age" min="0" max="21" required>
+
+                    <label for="movie-description">Beskrivelse</label>
+                    <textarea id="movie-description" maxlength="500"></textarea>
+
+                    <label for="movie-release-date">Startdato *</label>
+                    <input type="date" id="movie-release-date" required>
+
+                    <label for="movie-end-date">Slutdato *</label>
+                    <input type="date" id="movie-end-date" required>
+
+                    <label>
+                        <input type="checkbox" id="movie-active" checked>
+                        Aktiv
+                    </label>
+
+                    <button type="submit">Gem</button>
+                    <button type="button" id="cancel-movie-btn">Annuller</button>
+                </form>
+            </div>
+
+            <!-- Movie List -->
             <div class="data-container" id="movies-container">
                 <div class="loading">Indlæser film...</div>
             </div>
         </section>
 
+        <!-- Showings Section -->
         <section id="showings" class="admin-section">
             <h2>Forestillinger Administration</h2>
             <div class="action-bar">
@@ -53,6 +92,7 @@
             </div>
         </section>
 
+        <!-- Theaters Section -->
         <section id="theaters" class="admin-section">
             <h2>Biografsale Administration</h2>
             <div class="data-container" id="theaters-container">
@@ -60,6 +100,7 @@
             </div>
         </section>
 
+        <!-- Reservations Section -->
         <section id="reservations" class="admin-section">
             <h2>Reservationer</h2>
             <div class="data-container" id="reservations-container">
@@ -69,35 +110,19 @@
     </div>
 </main>
 
-<!-- admin -->
-<div id="movie-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 id="movie-modal-title">Film</h2>
-        <div id="movie-form-container">
-            <!-- todo movie form -->
-        </div>
-    </div>
-</div>
-
-<div id="showing-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 id="showing-modal-title">Forestilling</h2>
-        <div id="showing-form-container">
-            <!-- todo form her-->
-        </div>
-    </div>
-</div>
-
 <footer>
-    <p>&copy; 2025 Kino Grise Admin - Alle rettigheder forbeholdes</p>
+    <p>&copy; 2025 Kino Grisen Admin - Alle rettigheder forbeholdes</p>
 </footer>
 
-<script src="/js/api.js"></script>
-<script src="/js/adminMovies.js"></script>
-<script src="/js/adminShowings.js"></script>
-<script src="/js/adminTheaters.js"></script>
-<script src="/js/admin.js"></script>
+<script src="api.js"></script>
+<script src="newMovie.js"></script>
+<script src="admin.js"></script>
+<script src="AdminReservation.js"></script>
+<script src="AdminShowings.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        NewMovie.init();
+    });
+</script>
 </body>
 </html>

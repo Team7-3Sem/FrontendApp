@@ -3,7 +3,7 @@
  * Handles HTTP requests to the backend
  */
 const API = {
-    BASE_URL: '',
+    BASE_URL:'http://localhost:8080',
 
     /**
      * Generic fetch method for API calls

@@ -1,22 +1,33 @@
 /* Seat layout container */
 #seat-container {
-    display: grid;
-    grid-template-columns: repeat(5, 50px); /* Adjust for your layout */
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 20px;
+    align-items: center; /* Center the rows */
+}
+
+/* Each row inside the seat container */
+.seat-row {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    flex-wrap: nowrap; /* Ensure all seats stay in a row */
+    max-width: 100%;
 }
 
 /* Default seat style */
 .seat {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-color: lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 10px;
     border: 1px solid black;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 /* Reserved seats */
@@ -30,25 +41,11 @@
     background-color: green;
 }
 
-/* Form styling */
-form {
-    margin-top: 20px;
-}
-label, input {
-    display: block;
-    margin-bottom: 10px;
-}
-input {
-    padding: 5px;
-    width: 200px;
-}
-button {
-    padding: 10px;
-    background-color: #35ca13;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-button:hover {
-    background-color: darkblue;
+/* Ensure layout scales properly */
+@media (max-width: 768px) {
+    .seat {
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
 }
