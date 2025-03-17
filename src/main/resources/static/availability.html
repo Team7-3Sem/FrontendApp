@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema Seat Selection</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+<h1>Vælg ønskede sæder</h1>
+
+
+<label for="showingSelect">Vælg forestilling:</label>
+<select id="showingSelect">
+  <option disabled selected>Indlæser forestillinger...</option>
+</select>
+
+
+<div id="seat-container"></div>
+
+
+<form id="reservation-form">
+  <h2>Kundeinformation</h2>
+  <label for="customerName">Navn:</label>
+  <input type="text" id="customerName" required>
+
+  <label for="customerPhone">Telefonnummer:</label>
+  <input type="text" id="customerPhone" required>
+
+  <label for="customerEmail">Email:</label>
+  <input type="email" id="customerEmail" required>
+
+  <button type="button" id="reserve-button">Reservér sæder</button>
+</form>
+
+<script src="SeatAvailability.js"></script>
+</body>
+</html>
