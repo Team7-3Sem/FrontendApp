@@ -135,10 +135,7 @@ const ReservationModal = {
             const layout = await API.theaters.getLayout(theaterId);
             const rowCount = layout[0];
             const seatsPerRow = layout[1];
-
-            // ATTENTION: SIMULATED SEATS
-            const takenSeats = this.simulateTakenSeats(rowCount, seatsPerRow);
-
+            
             seatsContainer.innerHTML = '';
 
             // Create rows and seats
@@ -239,23 +236,6 @@ const ReservationModal = {
         }
     },
 
-    // Simulate taken seats for demo purposes
-    simulateTakenSeats(rowCount, seatsPerRow) {
-        const takenSeats = [];
-        const takenCount = Math.floor(rowCount * seatsPerRow * 0.3); // 30% of seats are taken
-
-        for (let i = 0; i < takenCount; i++) {
-            const row = Math.floor(Math.random() * rowCount) + 1;
-            const seat = Math.floor(Math.random() * seatsPerRow) + 1;
-
-            // Check if seat is already taken
-            if (!takenSeats.some(s => s.row === row && s.seat === seat)) {
-                takenSeats.push({ row, seat });
-            }
-        }
-
-        return takenSeats;
-    },
 
     // Helper methods
     formatDate(date) {

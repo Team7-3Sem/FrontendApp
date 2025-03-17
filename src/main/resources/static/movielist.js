@@ -18,7 +18,6 @@ const MovieList = {
             }
 
             this.moviesData = await response.json();
-            console.log('Loaded movies:', this.moviesData);
             this.renderMovies();
         } catch (error) {
             console.error("Error fetching movies:", error);
